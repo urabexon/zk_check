@@ -1,0 +1,11 @@
+{
+  "name": "zk-auth-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "snarkjs": "^0.7.3"
+  }
+}

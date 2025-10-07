@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Knowledge Authentication Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .status {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .proof-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 ゼロ知識証明認証デモ</h1>
+        
+        <div class="form-group">
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" placeholder="パスワードを入力してください">
+        </div>
+        
+        <div class="form-group">
+            <label for="expectedHash">期待するハッシュ値:</label>
+            <input type="text" id="expectedHash" placeholder="事前に計算されたハッシュ値を入力">
+            <small>または、パスワードから自動計算:</small>
+            <button id="generateHash">ハッシュを生成</button>
+        </div>
+        
+        <button id="generateProof">証明を生成</button>
+        <button id="verifyProof" disabled>証明を検証</button>
+        
+        <div id="status"></div>
+        
+        <div class="proof-section" id="proofSection" style="display: none;">
+            <h3>生成された証明:</h3>
+            <textarea id="proofOutput" readonly></textarea>
+            <small>この証明をサーバーに送信して認証を行います。パスワード自体は含まれていません。</small>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/snarkjs@latest/build/snarkjs.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

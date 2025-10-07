@@ -1,45 +1,10 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
-
-# Test binaries
-*.test
-*.out
-
-# Go binaries
-bin/
-pkg/
-
-# Go workspace files
-go.work
-go.work.sum
-
-# Dependency files
-go.sum
-# vendor/   # ← vendorを含める場合はコメント解除
-
-# Env & Config files
+node_modules/
+build/
+*.ptau
+*.zkey
+*.wasm
+*.sym
+*.r1cs
 .env
-config.ini
-
-# Database files
-*.db
-todos.db
-webapp.log
-
-# Logs
+dist/
 *.log
-
-# IDE / Editor settings
-.DS_Store
-.vscode/
-.idea/
-.cursor/
-
-# Project-specific
-CLAUDE.md
-
-# GitHub Actions (keep .github folder)
-!.github/
